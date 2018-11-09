@@ -10,8 +10,8 @@ commands = [
   'mysql -e "grant all privileges on inexistent_activerecord_unittest.* to rails@localhost;"',
   'mysql -e "create database activerecord_unittest default character set utf8mb4;"',
   'mysql -e "create database activerecord_unittest2 default character set utf8mb4;"',
-  'psql  -c "create database -E UTF8 -T template0 activerecord_unittest;" -U postgres',
-  'psql  -c "create database -E UTF8 -T template0 activerecord_unittest2;" -U postgres'
+  'psql  -c "create database activerecord_unittest;" -U postgres',
+  'psql  -c "create database activerecord_unittest2;" -U postgres'
 ]
 
 commands.each do |command|
@@ -56,6 +56,8 @@ end
 
 class BugTest < Minitest::Test
   def test_association_stuff
+    p ActiveRecord::Base.connection.postgresql_version
+
     post = Post.create!
     post.comments << Comment.create!
 
