@@ -16,7 +16,7 @@ services:
 bundler_args: --jobs 3 --retry 3
 before_install:
   - "rm ${BUNDLE_GEMFILE}.lock"
-  - "travis_retry gem update --system"
+  - "travis_retry gem update --system || travis_retry gem update --system 2.7.8"
   - "travis_retry gem install bundler"
 
 script: 'ci.rb'
@@ -24,4 +24,3 @@ script: 'ci.rb'
 rvm:
   - 2.2.10
   - 2.5.1
-  - ruby-head
