@@ -40,6 +40,6 @@ before_install:
 script: 'ci.rb'
 
 rvm:
-  - 2.4.4
+  - 2.2.10
   - 2.5.1
   - ruby-head
